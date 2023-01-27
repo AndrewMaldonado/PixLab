@@ -1,3 +1,5 @@
+package classes;
+
 
 
 import java.awt.*;
@@ -142,13 +144,49 @@ public class Picture extends SimplePicture
     Pixel[][] pixels = this.getPixels2D();
     Pixel topPixel = null;
     Pixel bottomPixel = null;
-    int width = pixels.length;
-    for(int col = 0; col < pixels[0].length; col ++) {
-        for(int row = 0; row < width / 2; row ++) {
-            topPixel = pixels[row][col];
-            bottomPixel = pixels[row + 1 + col][col];
-            bottomPixel.setColor(topPixel.getColor());
-        }
+    int width = pixels[0].length;
+    int height = pixels.length;
+    for (int row = 0; row < height / 2; row++)
+    {
+      for (int col = 0; col < width; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - 1 - row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+
+  public void mirrorHorizontalBotToTop()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int width = pixels[0].length;
+    int height = pixels.length;
+    for (int row = 0; row < height / 2; row++)
+    {
+      for (int col = 0; col < width; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - 1 - row][col];
+        topPixel.setColor(bottomPixel.getColor());
+      }
+    } 
+  }
+
+  public void mirrorDiagonal() {
+    Pixel[][] pixels =  this.getPixels2D();
+    Pixel oriPixel = null;
+    Pixel DiaPixel = null;
+    int height = pixels.length;
+    int width = pixels[0].length;
+    for(int row = 0; row < height; row ++) {
+      for(int col = 0; col < width; col++) {
+        oriPixel = pixels[row][col];
+        DiaPixel = pixels[row][col];
+        DiaPixel.setColor(oriPixel.getColor());
+      }
     }
   }
   
