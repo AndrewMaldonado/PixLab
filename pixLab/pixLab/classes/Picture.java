@@ -1,4 +1,4 @@
-package classes;
+package pixLab.pixLab.classes;
 
 
 
@@ -174,19 +174,27 @@ public class Picture extends SimplePicture
       }
     } 
   }
-
+  
+  /* 
+   * start with row0. Fro first row 0,0 then 1,1 2,2 etc
+   * 
+    */
   public void mirrorDiagonal() {
     Pixel[][] pixels =  this.getPixels2D();
     Pixel oriPixel = null;
     Pixel DiaPixel = null;
     int height = pixels.length;
-    int width = pixels[0].length;
-    for(int row = 0; row < height; row ++) {
-      for(int col = 0; col < width; col++) {
+    int width = height;
+    //int count = 0;
+    //int count2 = 0;
+    for(int row = height; row > 0; row --) {
+      for(int col = width; col > 0; col--) {
         oriPixel = pixels[row][col];
-        DiaPixel = pixels[row][col];
+        DiaPixel = pixels[height - 1 - row][col];
         DiaPixel.setColor(oriPixel.getColor());
       }
+      //count--;
+      //count2 --;
     }
   }
   
