@@ -182,23 +182,17 @@ public class Picture extends SimplePicture
   public void mirrorDiagonal() {
     Pixel[][] pixels =  this.getPixels2D();
     Pixel oriPixel = null;
-    Pixel DiaPixel = null;
+    Pixel diaPixel = null;
     int height = pixels.length;
-    int width = height;
-    //int count = 0;
-    //int count2 = 0;
     for(int row = 0; row < height; row ++) {
-      for(int col = 0; col < width / 2; col++) {
-        oriPixel = pixels[width - 1 - col][height - 1 - row];
-        DiaPixel = pixels[row][col];
-        DiaPixel.setColor(oriPixel.getColor());
+      for(int col = 0; col < height; col++) {
+        diaPixel = pixels[height - 1 - col][height - 1 - row];
+        oriPixel = pixels[height - 1 - row][height - 1 - col];
+        diaPixel.setColor(oriPixel.getColor());
       }
-      //count--;
-      //count2 --;
     }
   }
-  
-  
+
   public void rockBottom() {
     Pixel[][] pixels =  this.getPixels2D();
     Pixel oriPixel = null;
