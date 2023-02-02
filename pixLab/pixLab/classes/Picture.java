@@ -187,10 +187,10 @@ public class Picture extends SimplePicture
     int width = height;
     //int count = 0;
     //int count2 = 0;
-    for(int row = height; row > 0; row --) {
-      for(int col = width; col > 0; col--) {
-        oriPixel = pixels[row][col];
-        DiaPixel = pixels[height - 1 - row][col];
+    for(int row = 0; row < height; row ++) {
+      for(int col = 0; col < width / 2; col++) {
+        oriPixel = pixels[width - 1 - col][height - 1 - row];
+        DiaPixel = pixels[row][col];
         DiaPixel.setColor(oriPixel.getColor());
       }
       //count--;
@@ -198,6 +198,25 @@ public class Picture extends SimplePicture
     }
   }
   
+  
+  public void rockBottom() {
+    Pixel[][] pixels =  this.getPixels2D();
+    Pixel oriPixel = null;
+    Pixel DiaPixel = null;
+    int height = pixels.length;
+    int width = height;
+    //int count = 0;
+    //int count2 = 0;
+    for(int row = 0; row < height; row ++) {
+      for(int col = 0; col < width / 2; col++) {
+        oriPixel = pixels[width - 1 - col][height - 1 - row];
+        DiaPixel = pixels[row][col];
+        DiaPixel.setColor(oriPixel.getColor());
+      }
+      //count--;
+      //count2 --;
+    }
+  }
   
   
   /** Mirror just part of a picture of a temple */
