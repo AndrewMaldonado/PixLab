@@ -92,11 +92,26 @@ public class PictureTester
       canvas.explore();
   }
   
+  public static void testMirrorCollage()
+  {
+    Picture temple = new Picture("blue-mark.jpg");
+    temple.explore();
+    temple.mirrorGull();
+    temple.explore();
+  }
+  
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("swan.jpg");
     swan.edgeDetection(10);
+    swan.explore();
+  }
+  
+  public static void testMyEdgeDetection()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.myEdgeDetection(10);
     swan.explore();
   }
   
@@ -110,7 +125,9 @@ public class PictureTester
     //testMirrorVerticalRightToLeft();
     //testMirrorHorizontal();
     //testMirrorArms();
-    testMirrorGull();
+    //testMirrorGull();
+    //myCollage();
+    testMyEdgeDetection();
     //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();

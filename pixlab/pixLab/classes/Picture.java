@@ -337,11 +337,15 @@ public class Picture extends SimplePicture
     Picture flower2 = new Picture("flower2.jpg");
     Picture robot1 = new Picture("robot.jpg");
     Picture robot2 = new Picture("robot.jpg");
+    Picture robot3 = new Picture("robot.jpg");
+    Picture robot4 = new Picture("robot.jpg");
     this.copy(flower1,0,0);
     this.copy(flower2,100,0);
     this.copy(flower1,200,0);
-    this.copy(robot1,0,0);
-    this.copy(robot2,100,0);
+    this.copy(robot1,71,40);
+    this.copy(robot2,150,40);
+    this.copy(robot3,200,40);
+    this.copy(robot4,250,40);
     Picture flowerNoBlue = new Picture(flower2);
     flowerNoBlue.zeroBlue();
     this.copy(flowerNoBlue,300,0);
@@ -373,6 +377,40 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
+      }
+    }
+  }
+  
+  public void myEdgeDetection(int edgeDist)
+  {
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    Color rightColor = null;
+    Color bottomColor = null;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; 
+           col < pixels[0].length-1; col++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][col+1];
+        rightColor = rightPixel.getColor();
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[row][col + 1];
+        bottomColor = bottomPixel.getColor();
+        if (leftPixel.colorDistance(rightColor) > edgeDist) {
+          leftPixel.setColor(Color.BLACK);
+        } else {
+          leftPixel.setColor(Color.WHITE);
+        }
+        if (topPixel.colorDistance(bottomColor) > edgeDist) {
+          topPixel.setColor(Color.BLACK);
+        } else {
+          topPixel.setColor(Color.WHITE);
+        }
       }
     }
   }
